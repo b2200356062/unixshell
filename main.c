@@ -6,8 +6,6 @@
 #include <string.h>
 #include <readline/readline.h>
 #include <signal.h>
-#include <setjmp.h>
-
 
 char** get_input(char* input){
 	char** command = malloc(8 * sizeof(char *));
@@ -76,6 +74,7 @@ int main(){
 				perror(command[0]);
 				exit(1);
 			}
+
 			printf("this wont be printed if execvp is successful");
 		}
 		else{
