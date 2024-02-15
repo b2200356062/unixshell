@@ -5,6 +5,9 @@
 #include <sys/wait.h>
 #include <string.h>
 #include <readline/readline.h>
+#include <signal.h>
+#include <setjmp.h>
+
 
 char** get_input(char* input){
 	char** command = malloc(8 * sizeof(char *));
@@ -41,6 +44,8 @@ int main(){
 	pid_t child_pid;
 	int stat_loc;
 	
+	signal(SIGINT, SIG_IGN);
+
 	while(1){
 		input = readline("unix> ");
 		command = get_input(input);
@@ -63,6 +68,8 @@ int main(){
 			exit(1);
 		}
 		if(child_pid == 0){
+
+			signal(SIGINT, SIG_DFL);
 			execvp(command[0], command);
 
 			if(execvp(command[0], command) < 0){
@@ -92,7 +99,6 @@ int main(){
 	// 	wait_result = waitpid(child_pid, &stat_loc, WUNTRACED);
 	// 	printf("## parent ##\ncurrent pid: %d, child pid: %d\n", getpid(), child_pid);
 	// }
-
 
 	return 0;
 }

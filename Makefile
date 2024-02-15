@@ -1,3 +1,7 @@
-all:
+all: first second
+	
+first: main.c 
 	gcc -g main.c -o main -lreadline
-	./main
+
+second: sigint.c
+	gcc sigint.c -o sigint
