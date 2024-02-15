@@ -1,2 +1,2 @@
 a simple unix shell in C
-run with "make"
+compile with "make" then run ./main
