@@ -85,19 +85,5 @@ int main(){
 		free(command);
 	}
 
-	// pid_t wait_result;
-
-
-	// child_pid = fork();
-
-	// if(child_pid == 0){
-	// 	printf("## child ##\ncurrent pid: %d and child pid: %d\n", getpid(), child_pid);
-	// 	sleep(1);
-	// }
-	// else{
-	// 	wait_result = waitpid(child_pid, &stat_loc, WUNTRACED);
-	// 	printf("## parent ##\ncurrent pid: %d, child pid: %d\n", getpid(), child_pid);
-	// }
-
 	return 0;
 }
